@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="mrlib.java" default="all">
+
+    <property name="src" value="./src" />
+    <property name="classes" value="./classes" />
+    <property name="bin" value="./bin" />
+    <property name="javadoc" value="./javadoc" />
+    <property name="jarfile" value="mrlib.jar" />
+
+    <property name="encoding" value="UTF-8" />
+
+
+    <target name="compile">
+        <mkdir dir="${classes}" />
+        <javac srcdir="${src}" destdir="${classes}" encoding="${encoding}" debug="on" optimize="off" includeantruntime="false" />
+    </target>
+
+    <target name="jar">
+        <mkdir dir="${bin}" />
+        <jar jarfile="${bin}/${jarfile}">
+            <fileset dir="${classes}" includes="**/*.class" />
+        </jar>
+    </target>
+
+    <target name="all" depends="compile,jar" />
+
+</project>
+
